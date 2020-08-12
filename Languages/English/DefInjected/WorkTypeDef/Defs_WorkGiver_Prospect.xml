@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Prospecting.label>Prospect</Prospecting.label>
+  <Prospecting.description>searching for ores.</Prospecting.description>
+  <Prospecting.labelShort>Prospect</Prospecting.labelShort>
+  <Prospecting.pawnLabel>Prospector</Prospecting.pawnLabel>
+  <Prospecting.gerundLabel>prospecting</Prospecting.gerundLabel>
+  <Prospecting.verb>Prospect</Prospecting.verb>
+
+
+</LanguageData>
