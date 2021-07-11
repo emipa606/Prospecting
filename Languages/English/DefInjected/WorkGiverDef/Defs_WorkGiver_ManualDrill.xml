@@ -1,13 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <PrsManualDrillProspect.label>Prospect (Manual drill)</PrsManualDrillProspect.label>
   <PrsManualDrillProspect.verb>prospect</PrsManualDrillProspect.verb>
   <PrsManualDrillProspect.gerund>prospecting</PrsManualDrillProspect.gerund>
-
   <PrsManualDrillMine.label>Drill (Manual drill)</PrsManualDrillMine.label>
   <PrsManualDrillMine.verb>drill</PrsManualDrillMine.verb>
   <PrsManualDrillMine.gerund>drilling</PrsManualDrillMine.gerund>
-
-
 </LanguageData>

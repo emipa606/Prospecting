@@ -1,195 +1,218 @@
 ﻿using System;
-using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
 namespace Prospecting
 {
-	// Token: 0x02000002 RID: 2
-	[StaticConstructorOnStartup]
-	internal static class Prospecting_Initializer
-	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
-		static Prospecting_Initializer()
-		{
-			LongEventHandler.QueueLongEvent(new Action(Prospecting_Initializer.Setup), "LibraryStartup", false, null, true);
-		}
+    // Token: 0x02000002 RID: 2
+    [StaticConstructorOnStartup]
+    internal static class Prospecting_Initializer
+    {
+        // Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+        static Prospecting_Initializer()
+        {
+            LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
+        }
 
-		// Token: 0x06000002 RID: 2 RVA: 0x0000206C File Offset: 0x0000026C
-		public static void Setup()
-		{
-			Prospecting_Initializer.ApplyDeepDrillChances();
-			List<ThingDef> allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
-			checked
-			{
-				if (allDefs.Count > 0)
-				{
-					int mineCount = 0;
-					int changed = 0;
-					int deepmineCount = 0;
-					int deepchanged = 0;
-					foreach (ThingDef thing in allDefs)
-					{
-						bool hasDeepChanged = false;
-						if (thing != null)
-						{
-							float deepCommonality = thing.deepCommonality;
-							if (thing.deepCommonality > 0f)
-							{
-								deepmineCount++;
-								float MineDeepCommon = thing.deepCommonality;
-								float newMineDeepCommon = unchecked(MineDeepCommon * (Controller.Settings.PrsDeepCommonality / 100f));
-								if (newMineDeepCommon != MineDeepCommon)
-								{
-									thing.deepCommonality = newMineDeepCommon;
-									hasDeepChanged = true;
-								}
-								if (thing != null)
-								{
-									int deepCountPerPortion = thing.deepCountPerPortion;
-									int MineDeepYield = thing.deepCountPerPortion;
-									int newMineDeepYield = Math.Max(1, (int)(unchecked((float)MineDeepYield * (Controller.Settings.PrsDeepMineYield / 100f))));
-									newMineDeepYield = Math.Min(thing.stackLimit, newMineDeepYield);
-									if (newMineDeepYield != MineDeepYield)
-									{
-										thing.deepCountPerPortion = newMineDeepYield;
-										hasDeepChanged = true;
-									}
-								}
-								if (thing != null)
-								{
-									IntRange deepLumpSizeRange = thing.deepLumpSizeRange;
-									int MineDeepMin = thing.deepLumpSizeRange.min;
-									int MineDeepMax = thing.deepLumpSizeRange.max;
-									int newMineDeepMin = Math.Max(0, (int)(unchecked((float)MineDeepMin * (Controller.Settings.PrsDeepLumpSizeMin / 100f))));
-									int newMineDeepMax = Math.Max(MineDeepMin, (int)(unchecked((float)MineDeepMax * (Controller.Settings.PrsDeepLumpSizeMax / 100f))));
-									if (newMineDeepMin != MineDeepMin || newMineDeepMax != MineDeepMax)
-									{
-										thing.deepLumpSizeRange.min = newMineDeepMin;
-										thing.deepLumpSizeRange.max = newMineDeepMax;
-										hasDeepChanged = true;
-									}
-								}
-							}
-						}
-						if (hasDeepChanged)
-						{
-							deepchanged++;
-						}
-						if (thing.mineable && ((thing != null) ? thing.building : null) != null && thing.building.isResourceRock)
-						{
-							mineCount++;
-							bool hasChanged = false;
-							if (thing != null)
-							{
-								BuildingProperties building = thing.building;
-								IntRange? intRange = (building != null) ? new IntRange?(building.mineableScatterLumpSizeRange) : null;
-								if (intRange != null)
-								{
-									int MineMin = thing.building.mineableScatterLumpSizeRange.min;
-									int MineMax = thing.building.mineableScatterLumpSizeRange.max;
-									int newMineMin = Math.Max(1, (int)(unchecked((float)MineMin * (Controller.Settings.PrsLumpSizeMin / 100f))));
-									int newMineMax = Math.Max(MineMin, (int)(unchecked((float)MineMax * (Controller.Settings.PrsLumpSizeMax / 100f))));
-									if (newMineMin != MineMin || newMineMax != MineMax)
-									{
-										thing.building.mineableScatterLumpSizeRange.min = newMineMin;
-										thing.building.mineableScatterLumpSizeRange.max = newMineMax;
-										hasChanged = true;
-									}
-								}
-							}
-							if (thing != null)
-							{
-								BuildingProperties building2 = thing.building;
-								bool flag;
-								if (building2 == null)
-								{
-									flag = false;
-								}
-								else
-								{
-									float mineableScatterCommonality = building2.mineableScatterCommonality;
-									flag = true;
-								}
-								if (flag)
-								{
-									float MineCommon = thing.building.mineableScatterCommonality;
-									float newMineCommon = unchecked(MineCommon * (Controller.Settings.PrsCommonality / 100f));
-									if (newMineCommon != MineCommon)
-									{
-										thing.building.mineableScatterCommonality = newMineCommon;
-										hasChanged = true;
-									}
-								}
-							}
-							if (thing != null)
-							{
-								BuildingProperties building3 = thing.building;
-								bool flag2;
-								if (building3 == null)
-								{
-									flag2 = false;
-								}
-								else
-								{
-									int mineableYield = building3.mineableYield;
-									flag2 = true;
-								}
-								if (flag2)
-								{
-									int MineYield = thing.building.mineableYield;
-									BuildingProperties building4 = thing.building;
-									ThingDef MineThing = (building4 != null) ? building4.mineableThing : null;
-									int MaxStack = 1;
-									if (MineThing != null)
-									{
-										MaxStack = MineThing.stackLimit;
-									}
-									int newMineYield = Math.Max(1, (int)(unchecked((float)MineYield * (Controller.Settings.PrsMineYield / 100f))));
-									newMineYield = Math.Min(MaxStack, newMineYield);
-									if (newMineYield != MineYield)
-									{
-										thing.building.mineableYield = newMineYield;
-										hasChanged = true;
-									}
-								}
-							}
-							if (hasChanged)
-							{
-								changed++;
-							}
-						}
-					}
-					string deepMsg = "Prospecting.FeedbackDeepNoChg".Translate(deepmineCount.ToString());
-					if (deepchanged > 0)
-					{
-						deepMsg = "Prospecting.FeedbackDeep".Translate(deepmineCount.ToString(), deepchanged.ToString());
-					}
-					Log.Message(deepMsg, false);
-					string Msg = "Prospecting.FeedbackNoChg".Translate(mineCount.ToString());
-					if (changed > 0)
-					{
-						Msg = "Prospecting.Feedback".Translate(mineCount.ToString(), changed.ToString());
-					}
-					Log.Message(Msg, false);
-				}
-			}
-		}
+        // Token: 0x06000002 RID: 2 RVA: 0x0000206C File Offset: 0x0000026C
+        public static void Setup()
+        {
+            ApplyDeepDrillChances();
+            var allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            checked
+            {
+                if (allDefs.Count <= 0)
+                {
+                    return;
+                }
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000024C4 File Offset: 0x000006C4
-		public static void ApplyDeepDrillChances()
-		{
-			List<DifficultyDef> list = DefDatabase<DifficultyDef>.AllDefsListForReading;
-			if (list.Count > 0)
-			{
-				foreach (DifficultyDef def in list)
-				{
-					if (def.deepDrillInfestationChanceFactor <= 0f)
-					{
-						def.deepDrillInfestationChanceFactor = 0.01f;
-					}
-				}
-			}
-		}
-	}
+                var mineCount = 0;
+                var changed = 0;
+                var deepmineCount = 0;
+                var deepchanged = 0;
+                foreach (var thing in allDefs)
+                {
+                    var hasDeepChanged = false;
+                    if (thing != null)
+                    {
+                        var unused = thing.deepCommonality;
+                        if (thing.deepCommonality > 0f)
+                        {
+                            deepmineCount++;
+                            var MineDeepCommon = thing.deepCommonality;
+                            var newMineDeepCommon =
+                                MineDeepCommon * (Controller.Settings.PrsDeepCommonality / 100f);
+                            if (newMineDeepCommon != MineDeepCommon)
+                            {
+                                thing.deepCommonality = newMineDeepCommon;
+                                hasDeepChanged = true;
+                            }
+
+                            var unused1 = thing.deepCountPerPortion;
+                            var MineDeepYield = thing.deepCountPerPortion;
+                            var newMineDeepYield = Math.Max(1,
+                                (int) (MineDeepYield * (Controller.Settings.PrsDeepMineYield / 100f)));
+                            newMineDeepYield = Math.Min(thing.stackLimit, newMineDeepYield);
+                            if (newMineDeepYield != MineDeepYield)
+                            {
+                                thing.deepCountPerPortion = newMineDeepYield;
+                                hasDeepChanged = true;
+                            }
+
+                            var unused2 = thing.deepLumpSizeRange;
+                            var MineDeepMin = thing.deepLumpSizeRange.min;
+                            var MineDeepMax = thing.deepLumpSizeRange.max;
+                            var newMineDeepMin = Math.Max(0,
+                                (int) (MineDeepMin * (Controller.Settings.PrsDeepLumpSizeMin / 100f)));
+                            var newMineDeepMax = Math.Max(MineDeepMin,
+                                (int) (MineDeepMax * (Controller.Settings.PrsDeepLumpSizeMax / 100f)));
+                            if (newMineDeepMin != MineDeepMin || newMineDeepMax != MineDeepMax)
+                            {
+                                thing.deepLumpSizeRange.min = newMineDeepMin;
+                                thing.deepLumpSizeRange.max = newMineDeepMax;
+                                hasDeepChanged = true;
+                            }
+                        }
+                    }
+
+                    if (hasDeepChanged)
+                    {
+                        deepchanged++;
+                    }
+
+                    if (thing != null && (!thing.mineable || thing.building == null ||
+                                          !thing.building.isResourceRock))
+                    {
+                        continue;
+                    }
+
+                    mineCount++;
+                    var hasChanged = false;
+                    if (thing != null)
+                    {
+                        var building = thing.building;
+                        var intRange = building != null
+                            ? new IntRange?(building.mineableScatterLumpSizeRange)
+                            : null;
+                        if (intRange != null)
+                        {
+                            var MineMin = thing.building.mineableScatterLumpSizeRange.min;
+                            var MineMax = thing.building.mineableScatterLumpSizeRange.max;
+                            var newMineMin = Math.Max(1,
+                                (int) (MineMin * (Controller.Settings.PrsLumpSizeMin / 100f)));
+                            var newMineMax = Math.Max(MineMin,
+                                (int) (MineMax * (Controller.Settings.PrsLumpSizeMax / 100f)));
+                            if (newMineMin != MineMin || newMineMax != MineMax)
+                            {
+                                thing.building.mineableScatterLumpSizeRange.min = newMineMin;
+                                thing.building.mineableScatterLumpSizeRange.max = newMineMax;
+                                hasChanged = true;
+                            }
+                        }
+                    }
+
+                    if (thing != null)
+                    {
+                        var building2 = thing.building;
+                        bool building;
+                        if (building2 == null)
+                        {
+                            building = false;
+                        }
+                        else
+                        {
+                            var unused = building2.mineableScatterCommonality;
+                            building = true;
+                        }
+
+                        if (building)
+                        {
+                            var MineCommon = thing.building.mineableScatterCommonality;
+                            var newMineCommon = MineCommon * (Controller.Settings.PrsCommonality / 100f);
+                            if (newMineCommon != MineCommon)
+                            {
+                                thing.building.mineableScatterCommonality = newMineCommon;
+                                hasChanged = true;
+                            }
+                        }
+                    }
+
+                    if (thing != null)
+                    {
+                        var building3 = thing.building;
+                        bool building;
+                        if (building3 == null)
+                        {
+                            building = false;
+                        }
+                        else
+                        {
+                            var unused = building3.mineableYield;
+                            building = true;
+                        }
+
+                        if (building)
+                        {
+                            var MineYield = thing.building.mineableYield;
+                            var building4 = thing.building;
+                            var MineThing = building4?.mineableThing;
+                            var MaxStack = 1;
+                            if (MineThing != null)
+                            {
+                                MaxStack = MineThing.stackLimit;
+                            }
+
+                            var newMineYield = Math.Max(1,
+                                (int) (MineYield * (Controller.Settings.PrsMineYield / 100f)));
+                            newMineYield = Math.Min(MaxStack, newMineYield);
+                            if (newMineYield != MineYield)
+                            {
+                                thing.building.mineableYield = newMineYield;
+                                hasChanged = true;
+                            }
+                        }
+                    }
+
+                    if (hasChanged)
+                    {
+                        changed++;
+                    }
+                }
+
+                string deepMsg = "Prospecting.FeedbackDeepNoChg".Translate(deepmineCount.ToString());
+                if (deepchanged > 0)
+                {
+                    deepMsg = "Prospecting.FeedbackDeep".Translate(deepmineCount.ToString(),
+                        deepchanged.ToString());
+                }
+
+                Log.Message(deepMsg);
+                string Msg = "Prospecting.FeedbackNoChg".Translate(mineCount.ToString());
+                if (changed > 0)
+                {
+                    Msg = "Prospecting.Feedback".Translate(mineCount.ToString(), changed.ToString());
+                }
+
+                Log.Message(Msg);
+            }
+        }
+
+        // Token: 0x06000003 RID: 3 RVA: 0x000024C4 File Offset: 0x000006C4
+        public static void ApplyDeepDrillChances()
+        {
+            var list = DefDatabase<DifficultyDef>.AllDefsListForReading;
+            if (list.Count <= 0)
+            {
+                return;
+            }
+
+            foreach (var def in list)
+            {
+                if (def.deepDrillInfestationChanceFactor <= 0f)
+                {
+                    def.deepDrillInfestationChanceFactor = 0.01f;
+                }
+            }
+        }
+    }
 }

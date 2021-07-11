@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>PrsManualDrillProspect</defName>
+    <label>Prospect (Manual drill)</label>
+    <giverClass>Prospecting.WorkGiver_ManualDrillProspect</giverClass>
+    <workType>Prospecting</workType>
+    <priorityInType>50</priorityInType>
+    <verb>prospect</verb>
+    <gerund>prospecting</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+  <WorkGiverDef>
+    <defName>PrsManualDrillMine</defName>
+    <label>Drill (Manual drill)</label>
+    <giverClass>Prospecting.WorkGiver_ManualDrillMine</giverClass>
+    <workType>Mining</workType>
+    <priorityInType>25</priorityInType>
+    <verb>drill</verb>
+    <gerund>drilling</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

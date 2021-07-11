@@ -63,5 +63,4 @@
   <Prospecting.BeltFoundRes>{0} found deep ore nearby and suspects it is {1}</Prospecting.BeltFoundRes>
   <Prospecting.BeltNotFoundRes>{0} hasn't found any ores.</Prospecting.BeltNotFoundRes>
   <Prospecting.MarkerDisplay>Resources: {0} ({1})\nHours till expires: {2}</Prospecting.MarkerDisplay>
-
 </LanguageData>
