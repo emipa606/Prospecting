@@ -1,14 +1,11 @@
-﻿using Verse;
+using Verse;
 
-namespace Prospecting
+namespace Prospecting;
+
+public class CompProperties_WideBoy : CompProperties
 {
-    // Token: 0x02000009 RID: 9
-    public class CompProperties_WideBoy : CompProperties
+    public CompProperties_WideBoy()
     {
-        // Token: 0x06000033 RID: 51 RVA: 0x00003960 File Offset: 0x00001B60
-        public CompProperties_WideBoy()
-        {
-            compClass = typeof(CompWideBoy);
-        }
+        compClass = typeof(CompWideBoy);
     }
 }

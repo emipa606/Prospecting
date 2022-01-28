@@ -1,29 +1,20 @@
 # Prospecting
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2001863952
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+![Image](https://i.imgur.com/pufA0kM.png)
 
-
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/Prospecting]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
 # Overview
  V1.1
 
-Produce mining &quot;bits&quot; when in close proximity to ores or other mining sources other than stone chunks. Thus acting as earlier indication to those resources. 
+Produce mining "bits" when in close proximity to ores or other mining sources other than stone chunks. Thus acting as earlier indication to those resources. 
 
 Modifies surface and deep mining resource allocations.
 
@@ -85,7 +76,7 @@ Prospecting belt graphic - Kasmex Forever.
 (CC BY-NC-SA 4.0)
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 

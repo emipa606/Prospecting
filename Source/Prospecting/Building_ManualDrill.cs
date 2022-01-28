@@ -1,20 +1,17 @@
-﻿using Verse;
+using Verse;
 
-namespace Prospecting
+namespace Prospecting;
+
+public class Building_ManualDrill : Building
 {
-    // Token: 0x02000004 RID: 4
-    public class Building_ManualDrill : Building
+    public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
     {
-        // Token: 0x06000006 RID: 6 RVA: 0x0000267C File Offset: 0x0000087C
-        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+        var unused = Map;
+        base.DeSpawn(mode);
+        var CMD = this.TryGetComp<CompManualDrill>();
+        if (CMD != null)
         {
-            var unused = Map;
-            base.DeSpawn(mode);
-            var CMD = this.TryGetComp<CompManualDrill>();
-            if (CMD != null)
-            {
-                CompManualDrill.ResetVals(CMD);
-            }
+            CompManualDrill.ResetVals(CMD);
         }
     }
 }

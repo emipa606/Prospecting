@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Prospecting (Continued)</name>
   <packageId>Mlie.Prospecting</packageId>
@@ -20,11 +20,11 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2001863952
 
-[img]https://i.imgur.com/7Gzt3Rg.png[/img]
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
 [table]
 	[tr]
@@ -33,11 +33,11 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2001863952
 	[/tr]
 [/table]
 	
-[img]https://i.imgur.com/NOW7jU1.png[/img]
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
 
 [h1]Overview[/h1] V1.1
 
-Produce mining &quot;bits&quot; when in close proximity to ores or other mining sources other than stone chunks. Thus acting as earlier indication to those resources. 
+Produce mining "bits" when in close proximity to ores or other mining sources other than stone chunks. Thus acting as earlier indication to those resources. 
 
 Modifies surface and deep mining resource allocations.
 
@@ -93,7 +93,7 @@ Prospecting belt graphic - Kasmex Forever.
 (CC BY-NC-SA 4.0)
 
 
-[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -104,4 +104,3 @@ Prospecting belt graphic - Kasmex Forever.
 [/list]
 </description>
 </ModMetaData>
-

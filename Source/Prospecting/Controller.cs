@@ -1,30 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Verse;
 
-namespace Prospecting
+namespace Prospecting;
+
+public class Controller : Mod
 {
-    // Token: 0x0200000A RID: 10
-    public class Controller : Mod
+    public static Settings Settings;
+
+    public Controller(ModContentPack content) : base(content)
     {
-        // Token: 0x0400001C RID: 28
-        public static Settings Settings;
+        Settings = GetSettings<Settings>();
+    }
 
-        // Token: 0x06000036 RID: 54 RVA: 0x00003996 File Offset: 0x00001B96
-        public Controller(ModContentPack content) : base(content)
-        {
-            Settings = GetSettings<Settings>();
-        }
+    public override string SettingsCategory()
+    {
+        return "Prospecting.Name".Translate();
+    }
 
-        // Token: 0x06000034 RID: 52 RVA: 0x00003978 File Offset: 0x00001B78
-        public override string SettingsCategory()
-        {
-            return "Prospecting.Name".Translate();
-        }
-
-        // Token: 0x06000035 RID: 53 RVA: 0x00003989 File Offset: 0x00001B89
-        public override void DoSettingsWindowContents(Rect canvas)
-        {
-            Settings.DoWindowContents(canvas);
-        }
+    public override void DoSettingsWindowContents(Rect canvas)
+    {
+        Settings.DoWindowContents(canvas);
     }
 }
