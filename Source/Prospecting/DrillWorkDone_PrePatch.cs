@@ -39,7 +39,7 @@ namespace Prospecting
             var statValue = driller.GetStatValue(StatDefOf.MiningSpeed) * powerFactor;
             ___portionProgress += statValue;
             ___portionYieldPct += statValue * driller.GetStatValue(StatDefOf.MiningYield) /
-                                  (12000f / Find.Storyteller.difficulty.mineYieldFactor);
+                                  (10000f / Find.Storyteller.difficulty.mineYieldFactor);
             ___lastUsedTick = Find.TickManager.TicksGame;
             if (wbJob.targetA.HasThing)
             {
@@ -50,7 +50,7 @@ namespace Prospecting
                 }
             }
 
-            if (!(___portionProgress > 12000f / Find.Storyteller.difficulty.mineYieldFactor))
+            if (!(___portionProgress > 10000f / Find.Storyteller.difficulty.mineYieldFactor))
             {
                 return false;
             }
@@ -58,9 +58,11 @@ namespace Prospecting
             AccessTools.Method(typeof(CompDeepDrill), "TryProducePortion", new[]
             {
                 typeof(float)
+                typeof(Pawn)
             }).Invoke(__instance, new object[]
             {
-                ___portionYieldPct
+                ___portionYieldPct,
+                driller
             });
             ___portionProgress = 0f;
             ___portionYieldPct = 0f;
