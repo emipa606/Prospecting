@@ -57,7 +57,7 @@ namespace Prospecting
 
             AccessTools.Method(typeof(CompDeepDrill), "TryProducePortion", new[]
             {
-                typeof(float)
+                typeof(float),
                 typeof(Pawn)
             }).Invoke(__instance, new object[]
             {
