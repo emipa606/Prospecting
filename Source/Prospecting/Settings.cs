@@ -30,13 +30,28 @@ public class Settings : ModSettings
     public void DoWindowContents(Rect canvas)
     {
         var gap = 3f;
-        var listing_Standard = new Listing_Standard { ColumnWidth = canvas.width };
+        var listing_Standard = new Listing_Standard { ColumnWidth = canvas.width / 2.1f };
         listing_Standard.Begin(canvas);
         listing_Standard.Gap(10f);
         listing_Standard.CheckboxLabeled("Prospecting.AllowManualSound".Translate(), ref AllowManualSound);
         listing_Standard.Gap(gap);
         listing_Standard.CheckboxLabeled("Prospecting.AllowProspect".Translate(), ref AllowProspect);
         listing_Standard.Gap(gap);
+        if (listing_Standard.ButtonTextLabeled("Prospecting.ResetDefaults".Translate(),
+                "Prospecting.Reset".Translate()))
+        {
+            doReset();
+        }
+
+        if (Controller.currentVersion != null)
+        {
+            listing_Standard.Gap();
+            GUI.contentColor = Color.gray;
+            listing_Standard.Label("Prospecting.ModVersion".Translate(Controller.currentVersion));
+            GUI.contentColor = Color.white;
+        }
+
+        listing_Standard.NewColumn();
         checked
         {
             listing_Standard.Label("Prospecting.BaseChance".Translate() + "  " + (int)BaseChance);
@@ -67,17 +82,11 @@ public class Settings : ModSettings
             PrsDeepMineYield = (int)listing_Standard.Slider((int)PrsDeepMineYield, 50f, 200f);
             listing_Standard.Gap(gap);
             Text.Font = GameFont.Tiny;
-            listing_Standard.Label("          " + "Prospecting.LoadTip".Translate());
+            listing_Standard.Label("Prospecting.LoadTip".Translate());
             Text.Font = GameFont.Small;
-            listing_Standard.Gap(gap);
-            if (listing_Standard.ButtonTextLabeled("Prospecting.ResetDefaults".Translate(),
-                    "Prospecting.Reset".Translate()))
-            {
-                doReset();
-            }
-
-            listing_Standard.End();
         }
+
+        listing_Standard.End();
     }
 
     public void doReset()

@@ -95,7 +95,7 @@ public class WorkGiver_WideBoy : WorkGiver_DeepDrill
 
         var powerComp = building.TryGetComp<CompPowerTrader>();
         return (powerComp == null || powerComp.PowerOn) &&
-               building.Map.designationManager.DesignationOn(building, DesignationDefOf.Uninstall) == null &&
+               building.Map?.designationManager.DesignationOn(building, DesignationDefOf.Uninstall) == null &&
                !building.IsBurning();
     }
 

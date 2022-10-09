@@ -166,13 +166,13 @@ public class CompManualDrill : ThingComp
         resFound = null;
         MaxValue = 0;
         var found = false;
-        if (building?.Map == null || !building.Spawned)
+        if (building is { Map: null, Spawned: true })
         {
             return false;
         }
 
         var drillpoint = building.TrueCenter().ToIntVec3();
-        var mapComp = building.Map.GetComponent<ManualDrillMapComponent>();
+        var mapComp = building.Map?.GetComponent<ManualDrillMapComponent>();
         if (mapComp == null)
         {
             return false;

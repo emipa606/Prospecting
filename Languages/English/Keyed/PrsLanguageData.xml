@@ -16,6 +16,7 @@
   <Prospecting.LoadTip>(Relative settings will only be applicable upon new map generation and after a game restart.)</Prospecting.LoadTip>
   <Prospecting.ResetDefaults>Set values to defaults:</Prospecting.ResetDefaults>
   <Prospecting.Reset>Reset</Prospecting.Reset>
+  <Prospecting.ModVersion>Installed mod-version: {0}</Prospecting.ModVersion>
   <!-- Content -->
   <Prospecting.FeedbackDeepNoChg>Prospecting checked {0} deep mineable resources, with no changes.</Prospecting.FeedbackDeepNoChg>
   <Prospecting.FeedbackDeep>Prospecting checked {0} deep mineable resources, with {1} change(s).</Prospecting.FeedbackDeep>

@@ -16,7 +16,7 @@ public class ManualDrillUtility
         resDef = null;
         nextCell = drill.TrueCenter().ToIntVec3();
         shallowFactor = Math.Max(0.1f, Math.Min(0.33f, shallowFactor));
-        if (drill == null || !drill.Spawned || drill.Map == null)
+        if (drill is not { Spawned: true } || drill.Map == null)
         {
             return resCount;
         }
@@ -77,7 +77,7 @@ public class ManualDrillUtility
     public static int GetShallowResources(Building drill, float shallowFactor, IntVec3 cell)
     {
         var shallowRes = 0;
-        if (drill?.Map == null || !drill.Spawned || !(shallowFactor > 0f) ||
+        if (drill is { Map: null, Spawned: true } || !(shallowFactor > 0f) ||
             !drill.Map.GetComponent<ManualDrillMapComponent>().GetValue(cell, out var maxVal))
         {
             return shallowRes;
@@ -100,7 +100,7 @@ public class ManualDrillUtility
         roofFactor = 1f;
         windFactor = 1f;
         noWind = false;
-        if (drill?.Map == null || !drill.Spawned)
+        if (drill is { Map: null, Spawned: true })
         {
             return performFactor * roofFactor * windFactor;
         }
@@ -123,7 +123,11 @@ public class ManualDrillUtility
             roofFactor = Mathf.Lerp(0.5f, 1f, (float)openRoof / totalRoof);
         }
 
-        windFactor = Math.Min(1.5f, drill.Map.windManager.WindSpeed);
+        if (drill.Map != null)
+        {
+            windFactor = Math.Min(1.5f, drill.Map.windManager.WindSpeed);
+        }
+
         if (windFactor < 0.5f)
         {
             noWind = true;

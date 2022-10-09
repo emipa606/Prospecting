@@ -110,7 +110,7 @@ public class ProspectBelt : Apparel
 
     public static void DoPrsProspectBelt(Pawn p)
     {
-        if (p?.Map == null || !p.Spawned || p.Downed)
+        if (p is { Map: null, Spawned: true } || p.Downed)
         {
             return;
         }

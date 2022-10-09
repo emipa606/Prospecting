@@ -77,8 +77,7 @@ internal static class Prospecting_Initializer
                     deepchanged++;
                 }
 
-                if (thing != null && (!thing.mineable || thing.building == null ||
-                                      !thing.building.isResourceRock))
+                if (thing != null && (!thing.mineable || thing.building is not { isResourceRock: true }))
                 {
                     continue;
                 }

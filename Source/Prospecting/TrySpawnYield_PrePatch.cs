@@ -35,7 +35,7 @@ public class TrySpawnYield_PrePatch
 
         thing.stackCount = num;
         GenSpawn.Spawn(thing, __instance.Position, map);
-        if ((pawn == null || !pawn.IsColonist) && thing.def.EverHaulable && !thing.def.designateHaulable)
+        if (pawn is not { IsColonist: true } && thing.def.EverHaulable && !thing.def.designateHaulable)
         {
             thing.SetForbidden(true);
         }

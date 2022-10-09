@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>ManualDrillProspect</defName>
+    <driverClass>Prospecting.JobDriver_ManualDrillProspect</driverClass>
+    <reportString>prospecting at TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+  <JobDef>
+    <defName>ManualDrillMine</defName>
+    <driverClass>Prospecting.JobDriver_ManualDrillMine</driverClass>
+    <reportString>drilling at TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+</Defs>

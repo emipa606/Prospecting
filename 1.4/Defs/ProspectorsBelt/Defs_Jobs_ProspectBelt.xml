@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>ProspectBelt</defName>
+    <driverClass>Prospecting.JobDriver_ProspectBelt</driverClass>
+    <reportString>prospecting</reportString>
+    <allowOpportunisticPrefix>false</allowOpportunisticPrefix>
+  </JobDef>
+</Defs>

@@ -51,7 +51,7 @@ public class JobDriver_OperateWideBoy : JobDriver
             }
 
             var powerComp = job.targetA.Thing.TryGetComp<CompPowerTrader>();
-            return powerComp == null || !powerComp.PowerOn;
+            return powerComp is not { PowerOn: true };
         });
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
         var work = new Toil();

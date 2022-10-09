@@ -23,7 +23,7 @@ public class Alert_NeedProspector : Alert
                 continue;
             }
 
-            var designation = (from d in map.designationManager.allDesignations
+            var designation = (from d in map.designationManager.AllDesignations
                 where d.def == ProspectDef.Prospect
                 select d).FirstOrDefault();
             if (designation == null)

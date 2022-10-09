@@ -27,7 +27,7 @@ public class DrillWorkDone_PrePatch
         var powerFactor = 1f;
         if (wbJob.targetA.HasThing)
         {
-            var basePower = ___powerComp.Props.basePowerConsumption;
+            var basePower = ___powerComp.Props.PowerConsumption;
             if (basePower > 0f)
             {
                 powerFactor = Math.Max(0f, -1f * (___powerComp.PowerOutput / basePower));

@@ -62,4 +62,6 @@
   <Prospecting.BeltFoundRes>{0}付近の地層から{1}と思われる資源が発見された</Prospecting.BeltFoundRes>
   <Prospecting.BeltNotFoundRes>{0}は鉱石を発見できませんでした。</Prospecting.BeltNotFoundRes>
   <Prospecting.MarkerDisplay>資源：{0}（{1}）\n有効期限(残り時間)：{2}</Prospecting.MarkerDisplay>
+  <Prospecting.ModVersion>インストールされたMODのバージョン。 {0}</Prospecting.ModVersion>
+  <Prospecting.BeltFoundLabel>成功の予感</Prospecting.BeltFoundLabel>
 </LanguageData>

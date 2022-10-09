@@ -1,5 +1,9 @@
 # Changelog for Prospecting
 
+1.4.1 - Mod updated for 1.4 and passed autotests.
+Used DeepL to update translations for Japanese
+
+
 1.3.2 - Republish since github had issues with international characters in the API
 
 

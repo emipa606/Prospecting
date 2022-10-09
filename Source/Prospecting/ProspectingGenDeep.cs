@@ -49,7 +49,7 @@ public class ProspectingGenDeep
     private static bool CanScatterAt(IntVec3 pos, Map map)
     {
         var terrainDef = map.terrainGrid.TerrainAt(CellIndicesUtility.CellToIndex(pos, map.Size.x));
-        return (terrainDef == null || !terrainDef.IsWater || terrainDef.passability != Traversability.Impassable) &&
+        return terrainDef is not { IsWater: true, passability: Traversability.Impassable } &&
                !map.deepResourceGrid.GetCellBool(CellIndicesUtility.CellToIndex(pos, map.Size.x));
     }
 

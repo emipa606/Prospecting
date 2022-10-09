@@ -66,13 +66,13 @@ public class CompWideBoy : ThingComp
         }
 
         var compPower = compWB.parent.TryGetComp<CompPowerTrader>();
-        if (compPower == null || !compPower.PowerOn)
+        if (compPower is not { PowerOn: true })
         {
             return;
         }
 
         var compFlick = compWB.parent.TryGetComp<CompFlickable>();
-        if (compFlick == null || !compFlick.SwitchIsOn)
+        if (compFlick is not { SwitchIsOn: true })
         {
             return;
         }
@@ -86,18 +86,18 @@ public class CompWideBoy : ThingComp
     public void CheckBoost(CompWideBoy compWB, bool boost)
     {
         Thing drill = compWB?.parent;
-        if (drill == null || !drill.Spawned || drill.Map == null || drill.IsBrokenDown())
+        if (drill is not { Spawned: true } || drill.Map == null || drill.IsBrokenDown())
         {
             return;
         }
 
         var compPow = drill.TryGetComp<CompPowerTrader>();
-        if (compPow == null || !compPow.PowerOn)
+        if (compPow is not { PowerOn: true })
         {
             return;
         }
 
-        var powUse = compPow.Props.basePowerConsumption;
+        var powUse = compPow.Props.PowerConsumption;
         if (boost)
         {
             powUse *= 1.33f;
