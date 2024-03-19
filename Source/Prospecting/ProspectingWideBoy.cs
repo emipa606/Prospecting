@@ -18,12 +18,7 @@ public static class ProspectingWideBoy
         }
 
         wideboy = p.GetFirstThingWithComp<CompWideBoy>(map);
-        if (wideboy != null)
-        {
-            return true;
-        }
-
-        return false;
+        return wideboy != null;
     }
 
     public static int GetWideBoySpan(Thing wideboy)

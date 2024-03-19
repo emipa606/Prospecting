@@ -23,10 +23,10 @@ internal static class MultiplayerSupport
         MP.RegisterSyncMethod(typeof(ProspectBelt), "DoBeltSelect");
         MP.RegisterSyncMethod(typeof(ProspectBelt), "PrsUseBelt");
         MethodInfo[] array =
-        {
+        [
             AccessTools.Method(typeof(ProspectingUtility), "RndBits"),
             AccessTools.Method(typeof(ProspectingUtility), "Rnd100")
-        };
+        ];
         foreach (var methodInfo in array)
         {
             FixRNG(methodInfo);

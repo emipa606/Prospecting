@@ -7,7 +7,7 @@ namespace Prospecting;
 
 public class WorkGiver_ManualDrillMine : WorkGiver_Scanner
 {
-    public ThingDef ManualDrillDef = ProspectDef.PrsManualDrill;
+    public readonly ThingDef ManualDrillDef = ProspectDef.PrsManualDrill;
 
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(ManualDrillDef);
 
@@ -44,7 +44,7 @@ public class WorkGiver_ManualDrillMine : WorkGiver_Scanner
             return false;
         }
 
-        if (!(t is Building building))
+        if (t is not Building building)
         {
             return false;
         }

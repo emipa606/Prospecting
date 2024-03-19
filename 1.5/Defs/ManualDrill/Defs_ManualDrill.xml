@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>PrsManualDrilling</defName>
+    <label>Manual Ore Drilling</label>
+    <description>Provides the capability to create manual drills for ores. Can only drill to a shallow depth.</description>
+    <baseCost>350</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>Smithing</li>
+    </prerequisites>
+  </ResearchProjectDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>PrsManualDrill</defName>
+    <label>Manual drill</label>
+    <description>A manual drilling rig (assisted by wind power) for extracting minerals from under the surface at shallow depths. It can first be used to detect or prospect for ores being present. Can be repositioned.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/PrsManualDrill/PrsManualDrill</texPath>
+      <drawSize>(3,3)</drawSize>
+      <drawRotated>true</drawRotated>
+      <shadowData>
+        <volume>(0.52, 0.53, 0.09)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+    </graphicData>
+    <size>(3,3)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>75</pathCost>
+    <fillPercent>0.85</fillPercent>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <designationCategory>Production</designationCategory>
+    <designationHotKey>Misc12</designationHotKey>
+    <specialDisplayRadius>1.5</specialDisplayRadius>
+    <rotatable>true</rotatable>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <uiIconOffset>(0, 0.03)</uiIconOffset>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <building>
+      <uninstallWork>2500</uninstallWork>
+    </building>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <costList>
+      <Steel>100</Steel>
+      <WoodLog>400</WoodLog>
+    </costList>
+    <placeWorkers>
+      <li>Prospecting.PlaceWorker_ManualDrill</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <researchPrerequisites>
+      <li>PrsManualDrilling</li>
+    </researchPrerequisites>
+    <techLevel>Medieval</techLevel>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Flammability>0.75</Flammability>
+      <Beauty>-30</Beauty>
+      <Mass>50</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="Prospecting.CompProperties_ManualDrill">
+        <shallowReach>0.25</shallowReach>
+      </li>
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+</Defs>

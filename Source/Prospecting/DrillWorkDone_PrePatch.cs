@@ -53,15 +53,13 @@ public class DrillWorkDone_PrePatch
             return false;
         }
 
-        AccessTools.Method(typeof(CompDeepDrill), "TryProducePortion", new[]
-        {
+        AccessTools.Method(typeof(CompDeepDrill), "TryProducePortion", [
             typeof(float),
             typeof(Pawn)
-        }).Invoke(__instance, new object[]
-        {
+        ]).Invoke(__instance, [
             ___portionYieldPct,
             driller
-        });
+        ]);
         ___portionProgress = 0f;
         ___portionYieldPct = 0f;
 

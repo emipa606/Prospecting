@@ -5,13 +5,12 @@ using Verse;
 
 namespace Prospecting;
 
-[HarmonyPatch(typeof(Mineable), "TrySpawnYield")]
+[HarmonyPatch(typeof(Mineable), "TrySpawnYield", typeof(Map), typeof(bool), typeof(Pawn))]
 public class TrySpawnYield_PrePatch
 {
     [HarmonyPrefix]
     [HarmonyPriority(800)]
-    public static bool PreFix(ref Mineable __instance, ref float ___yieldPct, Map map, float yieldChance,
-        bool moteOnWaste, Pawn pawn)
+    public static bool PreFix(ref Mineable __instance, ref float ___yieldPct, Map map, Pawn pawn)
     {
         if (__instance.def.building.mineableThing == null ||
             !(Rand.Value <= __instance.def.building.mineableDropChance) || !__instance.def.building.isResourceRock)

@@ -14,7 +14,7 @@ public class Controller : Mod
     {
         Settings = GetSettings<Settings>();
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.Prospecting"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()

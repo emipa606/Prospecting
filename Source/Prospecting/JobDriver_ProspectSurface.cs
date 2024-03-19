@@ -78,7 +78,7 @@ public class JobDriver_ProspectSurface : JobDriver
 
             effecter.Trigger(actor, prospectTarget);
             var num = 1;
-            if (!(prospectTarget is Mineable mineable) || prospectTarget.HitPoints > num)
+            if (prospectTarget is not Mineable mineable || prospectTarget.HitPoints > num)
             {
                 var mining = DamageDefOf.Mining;
                 float amount = num;

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkTypeDef>
+    <defName>Prospecting</defName>
+    <labelShort>Prospect</labelShort>
+    <pawnLabel>Prospector</pawnLabel>
+    <gerundLabel>prospecting</gerundLabel>
+    <description>searching for ores.</description>
+    <verb>Prospect</verb>
+    <naturalPriority>650</naturalPriority>
+    <requireCapableColonist>true</requireCapableColonist>
+    <relevantSkills>
+      <li>Mining</li>
+    </relevantSkills>
+    <workTags>
+      <li>ManualSkilled</li>
+      <li>Mining</li>
+    </workTags>
+  </WorkTypeDef>
+  <WorkGiverDef>
+    <defName>PrsProspectSurface</defName>
+    <label>Prospect Surface</label>
+    <giverClass>Prospecting.WorkGiver_ProspectSurface</giverClass>
+    <workType>Prospecting</workType>
+    <priorityInType>100</priorityInType>
+    <verb>prospect</verb>
+    <gerund>prospecting</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

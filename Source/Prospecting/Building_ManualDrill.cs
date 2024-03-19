@@ -6,7 +6,7 @@ public class Building_ManualDrill : Building
 {
     public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
     {
-        var unused = Map;
+        _ = Map;
         base.DeSpawn(mode);
         var CMD = this.TryGetComp<CompManualDrill>();
         if (CMD != null)

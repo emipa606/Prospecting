@@ -74,12 +74,7 @@ public class ProspectingUtility
         }
 
         prospectDef = candidates.RandomElement();
-        if (prospectDef != null)
-        {
-            return true;
-        }
-
-        return false;
+        return prospectDef != null;
     }
 
     public static void YieldExtra(Pawn pawn, ThingDef bitsdef)

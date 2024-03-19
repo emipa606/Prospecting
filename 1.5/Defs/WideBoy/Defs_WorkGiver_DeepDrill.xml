@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>PrsWideDrill</defName>
+    <label>drill at wide deep drill</label>
+    <giverClass>Prospecting.WorkGiver_WideBoy</giverClass>
+    <workType>Mining</workType>
+    <priorityInType>75</priorityInType>
+    <verb>drill</verb>
+    <gerund>drilling</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

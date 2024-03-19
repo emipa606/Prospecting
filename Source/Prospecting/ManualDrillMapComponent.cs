@@ -6,7 +6,7 @@ namespace Prospecting;
 
 public class ManualDrillMapComponent : MapComponent
 {
-    public List<string> drillList = new List<string>();
+    public List<string> drillList = [];
 
     public ManualDrillMapComponent(Map map) : base(map)
     {
@@ -16,7 +16,7 @@ public class ManualDrillMapComponent : MapComponent
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Collections.Look(ref drillList, "drillList", LookMode.Value, Array.Empty<object>());
+        Scribe_Collections.Look(ref drillList, "drillList", LookMode.Value, []);
     }
 
     public bool GetValue(IntVec3 cell, out int maxValue)
@@ -80,9 +80,9 @@ public class ManualDrillMapComponent : MapComponent
     public static int IntValuePart(string value, int num)
     {
         char[] divider =
-        {
+        [
             ','
-        };
+        ];
         var segments = value.Split(divider);
         try
         {

@@ -12,7 +12,7 @@ public class ProspectBelt : Apparel
 
     public override IEnumerable<Gizmo> GetWornGizmos()
     {
-        var unused = Wearer;
+        _ = Wearer;
         if (Wearer == null)
         {
             yield break;

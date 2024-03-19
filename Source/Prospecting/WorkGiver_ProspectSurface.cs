@@ -11,9 +11,9 @@ public class WorkGiver_ProspectSurface : WorkGiver_Scanner
 
     private static string NoPathTrans;
 
-    public DesignationDef prospectDesig = ProspectDef.Prospect;
+    public readonly DesignationDef prospectDesig = ProspectDef.Prospect;
 
-    public JobDef ProspectJob = ProspectDef.ProspectSurface;
+    public readonly JobDef ProspectJob = ProspectDef.ProspectSurface;
 
     public override PathEndMode PathEndMode => PathEndMode.Touch;
 

@@ -32,7 +32,7 @@ internal static class Prospecting_Initializer
                 var hasDeepChanged = false;
                 if (thing != null)
                 {
-                    var unused = thing.deepCommonality;
+                    _ = thing.deepCommonality;
                     if (thing.deepCommonality > 0f)
                     {
                         deepmineCount++;
@@ -45,7 +45,7 @@ internal static class Prospecting_Initializer
                             hasDeepChanged = true;
                         }
 
-                        var unused1 = thing.deepCountPerPortion;
+                        _ = thing.deepCountPerPortion;
                         var MineDeepYield = thing.deepCountPerPortion;
                         var newMineDeepYield = Math.Max(1,
                             (int)(MineDeepYield * (Controller.Settings.PrsDeepMineYield / 100f)));
@@ -56,7 +56,7 @@ internal static class Prospecting_Initializer
                             hasDeepChanged = true;
                         }
 
-                        var unused2 = thing.deepLumpSizeRange;
+                        _ = thing.deepLumpSizeRange;
                         var MineDeepMin = thing.deepLumpSizeRange.min;
                         var MineDeepMax = thing.deepLumpSizeRange.max;
                         var newMineDeepMin = Math.Max(0,
@@ -117,7 +117,7 @@ internal static class Prospecting_Initializer
                     }
                     else
                     {
-                        var unused = building2.mineableScatterCommonality;
+                        _ = building2.mineableScatterCommonality;
                         building = true;
                     }
 
@@ -143,7 +143,7 @@ internal static class Prospecting_Initializer
                     }
                     else
                     {
-                        var unused = building3.mineableYield;
+                        _ = building3.mineableYield;
                         building = true;
                     }
 

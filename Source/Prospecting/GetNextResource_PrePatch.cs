@@ -4,21 +4,19 @@ using Verse;
 
 namespace Prospecting;
 
-[HarmonyPatch(typeof(DeepDrillUtility), "GetNextResource", new[]
-{
+[HarmonyPatch(typeof(DeepDrillUtility), "GetNextResource", [
     typeof(IntVec3),
     typeof(Map),
     typeof(ThingDef),
     typeof(int),
     typeof(IntVec3)
-}, new[]
-{
+], [
     ArgumentType.Normal,
     ArgumentType.Normal,
     ArgumentType.Out,
     ArgumentType.Out,
     ArgumentType.Out
-})]
+])]
 public class GetNextResource_PrePatch
 {
     [HarmonyPrefix]

@@ -7,7 +7,7 @@ namespace Prospecting;
 
 public class WorkGiver_WideBoy : WorkGiver_DeepDrill
 {
-    public ThingDef wideBoyDef = ProspectDef.PrsWideDeepDrill;
+    public readonly ThingDef wideBoyDef = ProspectDef.PrsWideDeepDrill;
 
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(wideBoyDef);
 
@@ -44,7 +44,7 @@ public class WorkGiver_WideBoy : WorkGiver_DeepDrill
             return false;
         }
 
-        if (!(t is Building building))
+        if (t is not Building building)
         {
             return false;
         }

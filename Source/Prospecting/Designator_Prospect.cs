@@ -8,9 +8,9 @@ namespace Prospecting;
 
 public class Designator_Prospect : Designator
 {
-    public DesignationDef MineDesig = DesignationDefOf.Mine;
+    public readonly DesignationDef MineDesig = DesignationDefOf.Mine;
 
-    public DesignationDef ProspectDesig = ProspectDef.Prospect;
+    public readonly DesignationDef ProspectDesig = ProspectDef.Prospect;
 
     public Designator_Prospect()
     {
@@ -106,26 +106,23 @@ public class Designator_Prospect : Designator
 
         var chkcells = GenAdjFast.AdjacentCellsCardinal(t.Position);
         var entry = false;
-        if (chkcells.Count > 0)
-        {
-            foreach (var chkcell in chkcells)
-            {
-                if (!chkcell.InBounds(Map) || !chkcell.Standable(Map) && !chkcell.Walkable(Map))
-                {
-                    continue;
-                }
-
-                entry = true;
-                break;
-            }
-        }
-
-        if (!entry)
+        if (chkcells.Count <= 0)
         {
             return false;
         }
 
-        return true;
+        foreach (var chkcell in chkcells)
+        {
+            if (!chkcell.InBounds(Map) || !chkcell.Standable(Map) && !chkcell.Walkable(Map))
+            {
+                continue;
+            }
+
+            entry = true;
+            break;
+        }
+
+        return entry;
     }
 
     public bool CloseToDesig(DesignationDef desig, int near, IntVec3 root, Map map)

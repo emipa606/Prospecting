@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>PrsWideDeepDrill</defName>
+    <label>Wide Boy</label>
+    <description>The "Wide Boy" is a deep-crust drilling rig for extracting minerals from deep under the surface. Use a ground-penetrating scanner to detect the resources. This drill will yield stone chunks if no resources are present. Can be repositioned freely. The "Wide Boy" does not operate any faster than a regular deep drill but covers a larger area.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/PrsWideDeepDrill/PrsWideDeepDrill</texPath>
+      <drawSize>(2,2)</drawSize>
+      <drawRotated>false</drawRotated>
+      <shadowData>
+        <volume>(0.52, 0.53, 0.09)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+    </graphicData>
+    <size>(1,1)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>80</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <designationCategory>Production</designationCategory>
+    <designationHotKey>Misc12</designationHotKey>
+    <rotatable>true</rotatable>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <uiIconOffset>(0, 0.03)</uiIconOffset>
+    <uiIconScale>0.85</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <building>
+      <uninstallWork>2000</uninstallWork>
+    </building>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <costList>
+      <Steel>240</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <placeWorkers>
+      <li>Prospecting.PlaceWorker_WideBoy</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <researchPrerequisites>
+      <li>DeepDrilling</li>
+    </researchPrerequisites>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>16000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-25</Beauty>
+      <Mass>40</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>360</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_DeepDrill" />
+      <li Class="Prospecting.CompProperties_WideBoy" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_CreatesInfestations" />
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+</Defs>
