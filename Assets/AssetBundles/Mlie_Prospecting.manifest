@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 2374185344
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 36639936171fbdb4e1aeafcc2b87d263
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ce3b6d18a872ca8039cd5eb3c4fb7ef5
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 36639936171fbdb4e1aeafcc2b87d263
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.Prospecting/Sounds/PrsManualDrill/PrsManualDrill.ogg
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/BoostToggle.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/RockToggle.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/SpanImageOne.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/SpanImageThree.png
+- Assets/Data/Mlie.Prospecting/Textures/Designations/Prospect.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/SpanImageTwo.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Building/PrsProspectMarker/PrsProspectMarker.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Item/PrsProspectBelt/PrsProspectBelt.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Building/PrsManualDrill/PrsManualDrill.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Building/PrsManualDrill/PrsDrillWindBit.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Building/PrsWideDeepDrill/PrsWideDeepDrill.png
+- Assets/Data/Mlie.Prospecting/Textures/UI/Designators/Prospecting.png
+- Assets/Data/Mlie.Prospecting/Textures/Designations/Mine.png
+- Assets/Data/Mlie.Prospecting/Textures/Things/Special/PrsProspectBelt/PrsProspectBelt.png
+Dependencies: []

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Drill (Manual drill) -->
+  <PrsManualDrillMine.label>Drill (Manual drill)</PrsManualDrillMine.label>
+  <!-- EN: drilling -->
+  <PrsManualDrillMine.gerund>drilling</PrsManualDrillMine.gerund>
+  <!-- EN: drill -->
+  <PrsManualDrillMine.verb>drill</PrsManualDrillMine.verb>
+  <!-- EN: Prospect (Manual drill) -->
+  <PrsManualDrillProspect.label>Prospect (Manual drill)</PrsManualDrillProspect.label>
+  <!-- EN: prospecting -->
+  <PrsManualDrillProspect.gerund>prospecting</PrsManualDrillProspect.gerund>
+  <!-- EN: prospect -->
+  <PrsManualDrillProspect.verb>prospect</PrsManualDrillProspect.verb>
+</LanguageData>

@@ -8,7 +8,7 @@ namespace Prospecting;
 [StaticConstructorOnStartup]
 internal static class MultiplayerSupport
 {
-    private static readonly Harmony harmony = new Harmony("rimworld.pelador.prospecting.multiplayersupport");
+    private static readonly Harmony harmony = new("rimworld.pelador.prospecting.multiplayersupport");
 
     static MultiplayerSupport()
     {

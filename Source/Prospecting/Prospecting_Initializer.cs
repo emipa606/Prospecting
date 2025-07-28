@@ -12,7 +12,7 @@ internal static class Prospecting_Initializer
         LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
     }
 
-    public static void Setup()
+    private static void Setup()
     {
         ApplyDeepDrillChances();
         var allDefs = DefDatabase<ThingDef>.AllDefsListForReading;
@@ -193,7 +193,7 @@ internal static class Prospecting_Initializer
         }
     }
 
-    public static void ApplyDeepDrillChances()
+    private static void ApplyDeepDrillChances()
     {
         var list = DefDatabase<DifficultyDef>.AllDefsListForReading;
         if (list.Count <= 0)

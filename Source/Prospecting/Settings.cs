@@ -7,7 +7,7 @@ public class Settings : ModSettings
 {
     public bool AllowManualSound = true;
 
-    public bool AllowProspect = true;
+    private bool AllowProspect = true;
 
     public float BaseChance = 50f;
 
@@ -89,7 +89,7 @@ public class Settings : ModSettings
         listing_Standard.End();
     }
 
-    public void doReset()
+    private void doReset()
     {
         AllowManualSound = true;
         AllowProspect = true;

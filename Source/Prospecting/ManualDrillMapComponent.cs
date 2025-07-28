@@ -6,17 +6,16 @@ namespace Prospecting;
 
 public class ManualDrillMapComponent : MapComponent
 {
-    public List<string> drillList = [];
+    private List<string> drillList = [];
 
     public ManualDrillMapComponent(Map map) : base(map)
     {
-        this.map = map;
     }
 
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Collections.Look(ref drillList, "drillList", LookMode.Value, []);
+        Scribe_Collections.Look(ref drillList, "drillList", LookMode.Value);
     }
 
     public bool GetValue(IntVec3 cell, out int maxValue)
@@ -77,7 +76,7 @@ public class ManualDrillMapComponent : MapComponent
         drillList.Add(strVal);
     }
 
-    public static int IntValuePart(string value, int num)
+    private static int IntValuePart(string value, int num)
     {
         char[] divider =
         [

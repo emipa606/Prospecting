@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: drilling at TargetA. -->
+  <ManualDrillMine.reportString>drilling at TargetA.</ManualDrillMine.reportString>
+  <!-- EN: prospecting at TargetA. -->
+  <ManualDrillProspect.reportString>prospecting at TargetA.</ManualDrillProspect.reportString>
+</LanguageData>

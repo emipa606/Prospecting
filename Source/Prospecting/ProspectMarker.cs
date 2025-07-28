@@ -24,7 +24,7 @@ public class ProspectMarker : Building
         }
     }
 
-    public override void Tick()
+    protected override void Tick()
     {
         base.Tick();
         var interval = 240;

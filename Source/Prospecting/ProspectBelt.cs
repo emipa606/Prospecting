@@ -35,7 +35,7 @@ public class ProspectBelt : Apparel
         };
     }
 
-    public void DoBeltSelect(Pawn p)
+    private void DoBeltSelect(Pawn p)
     {
         var list = new List<FloatMenuOption>();
         string text = "Prospecting.BeltDoNothing".Translate();
@@ -47,7 +47,7 @@ public class ProspectBelt : Apparel
         Find.WindowStack.Add(new FloatMenu(list));
     }
 
-    public void PrsUseBelt(Pawn p, bool Using)
+    private void PrsUseBelt(Pawn p, bool Using)
     {
         if (!Using || p == null)
         {
@@ -74,7 +74,7 @@ public class ProspectBelt : Apparel
         }
     }
 
-    public static void ChkPrsBelt(Pawn p, out string Reason, out bool Passed)
+    private static void ChkPrsBelt(Pawn p, out string Reason, out bool Passed)
     {
         Reason = null;
         if (!p.RaceProps.Humanlike)
@@ -94,7 +94,7 @@ public class ProspectBelt : Apparel
         Passed = true;
     }
 
-    public static void TakeProspectBeltJob(Pawn p)
+    private static void TakeProspectBeltJob(Pawn p)
     {
         if (p.CurJob != null)
         {

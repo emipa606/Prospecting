@@ -91,7 +91,7 @@ public class ProspectingUtility
         }
     }
 
-    public static bool IsException(ThingDef def)
+    private static bool IsException(ThingDef def)
     {
         if (def?.thingCategories == null)
         {
@@ -112,7 +112,7 @@ public class ProspectingUtility
         return Exceptions().Contains(def.defName);
     }
 
-    public static List<string> Exceptions()
+    private static List<string> Exceptions()
     {
         var list = new List<string>();
         list.AddDistinct("CollapsedRocks");

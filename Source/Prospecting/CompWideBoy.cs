@@ -19,19 +19,19 @@ public class CompWideBoy : ThingComp
 
     [NoTranslate] private readonly string SpanImageTwo = "Things/Special/SpanImageTwo";
 
-    public int lastBreakCheck;
+    private int lastBreakCheck;
 
     public int lastDriller;
 
-    public int lastSparkTick;
+    private int lastSparkTick;
 
     public bool mineRock;
 
-    public bool MiningResources = true;
+    private bool MiningResources = true;
 
     public int span = 49;
 
-    public bool WBBoost;
+    private bool WBBoost;
 
     public override void PostExposeData()
     {
@@ -52,7 +52,7 @@ public class CompWideBoy : ThingComp
         CheckResources(this);
     }
 
-    public void CheckResources(CompWideBoy compWB)
+    private void CheckResources(CompWideBoy compWB)
     {
         if (!compWB.parent.IsHashIntervalTick(75))
         {
@@ -83,7 +83,7 @@ public class CompWideBoy : ThingComp
             MessageTypeDefOf.NeutralEvent, false);
     }
 
-    public void CheckBoost(CompWideBoy compWB, bool boost)
+    private void CheckBoost(CompWideBoy compWB, bool boost)
     {
         Thing drill = compWB?.parent;
         if (drill is not { Spawned: true } || drill.Map == null || drill.IsBrokenDown())
@@ -118,13 +118,13 @@ public class CompWideBoy : ThingComp
         CheckBreakdown(drill);
     }
 
-    public bool IsDrillActive(Thing WideBoy)
+    private bool IsDrillActive(Thing WideBoy)
     {
         var compDeep = WideBoy.TryGetComp<CompDeepDrill>();
         return compDeep != null && compDeep.UsedLastTick() && lastDriller > 0;
     }
 
-    public void DoSparks(Thing WideBoy)
+    private void DoSparks(Thing WideBoy)
     {
         if (Find.TickManager.TicksGame <= lastSparkTick + ProspectingUtility.RndBits(95, 165))
         {
@@ -139,7 +139,7 @@ public class CompWideBoy : ThingComp
         }
     }
 
-    public void CheckBreakdown(Thing WideBoy)
+    private void CheckBreakdown(Thing WideBoy)
     {
         if (Find.TickManager.TicksGame <= lastBreakCheck)
         {
@@ -224,7 +224,7 @@ public class CompWideBoy : ThingComp
         };
     }
 
-    public void SetSpanWB(CompWideBoy cwb)
+    private void SetSpanWB(CompWideBoy cwb)
     {
         var list = new List<FloatMenuOption>();
         string text = "Prospecting.SpanDoNothing".Translate();
@@ -241,7 +241,7 @@ public class CompWideBoy : ThingComp
         Find.WindowStack.Add(new FloatMenu(list));
     }
 
-    public void SetSpanValue(CompWideBoy cwb, int spanValue)
+    private void SetSpanValue(CompWideBoy cwb, int spanValue)
     {
         if (spanValue <= 0)
         {
@@ -270,12 +270,12 @@ public class CompWideBoy : ThingComp
         cwb.span = newSpan;
     }
 
-    public void ToggleMineRock(bool flag, CompWideBoy cwb)
+    private void ToggleMineRock(bool flag, CompWideBoy cwb)
     {
         cwb.mineRock = !flag;
     }
 
-    public void ToggleBoost(bool flag, CompWideBoy cwb)
+    private void ToggleBoost(bool flag, CompWideBoy cwb)
     {
         cwb.WBBoost = !flag;
     }
@@ -313,7 +313,7 @@ public class CompWideBoy : ThingComp
         }
     }
 
-    public bool NoMiningResources(CompWideBoy compWB)
+    private bool NoMiningResources(CompWideBoy compWB)
     {
         var compDeepDrill = compWB?.parent.TryGetComp<CompDeepDrill>();
         if (compDeepDrill == null)

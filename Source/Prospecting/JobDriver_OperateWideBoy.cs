@@ -55,11 +55,11 @@ public class JobDriver_OperateWideBoy : JobDriver
         });
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
         var work = new Toil();
-        work.tickAction = delegate
+        work.tickIntervalAction = delegate(int delta)
         {
             var actor = work.actor;
-            ((Building)actor.CurJob.targetA.Thing).GetComp<CompDeepDrill>().DrillWorkDone(actor);
-            actor.skills.Learn(SkillDefOf.Mining, 0.07f);
+            ((Building)actor.CurJob.targetA.Thing).GetComp<CompDeepDrill>().DrillWorkDone(actor, delta);
+            actor.skills.Learn(SkillDefOf.Mining, 0.07f * delta);
         };
         work.defaultCompleteMode = ToilCompleteMode.Never;
         work.WithEffect(EffecterDefOf.Drill, TargetIndex.A);

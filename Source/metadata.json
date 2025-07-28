@@ -2,5 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5"
+  "PreviewVersion": "1.6",
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 107075,
+  "LinesOfXML": 16369,
+  "CodeBaseSize": 80,
+  "LastXmlCleaning": "2025-07-28T19:47:40.4842861+02:00",
+  "SocialImageSet": true,
+  "SearchTags": [
+    " resources",
+    " exploration"
+  ]
 }

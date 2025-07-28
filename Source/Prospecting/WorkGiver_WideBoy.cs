@@ -7,7 +7,7 @@ namespace Prospecting;
 
 public class WorkGiver_WideBoy : WorkGiver_DeepDrill
 {
-    public readonly ThingDef wideBoyDef = ProspectDef.PrsWideDeepDrill;
+    private readonly ThingDef wideBoyDef = ProspectDef.PrsWideDeepDrill;
 
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(wideBoyDef);
 

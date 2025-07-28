@@ -8,9 +8,9 @@ namespace Prospecting;
 
 public class Designator_Prospect : Designator
 {
-    public readonly DesignationDef MineDesig = DesignationDefOf.Mine;
+    private readonly DesignationDef MineDesig = DesignationDefOf.Mine;
 
-    public readonly DesignationDef ProspectDesig = ProspectDef.Prospect;
+    private readonly DesignationDef ProspectDesig = ProspectDef.Prospect;
 
     public Designator_Prospect()
     {
@@ -23,7 +23,7 @@ public class Designator_Prospect : Designator
         soundSucceeded = SoundDefOf.Designate_Mine;
     }
 
-    public override int DraggableDimensions => 0;
+    public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.Mine;
 
     public override bool DragDrawMeasurements => false;
 

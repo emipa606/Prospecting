@@ -71,10 +71,7 @@ public class JobDriver_ProspectSurface : JobDriver
             }
 
             var position = prospectTarget.Position;
-            if (effecter == null)
-            {
-                effecter = EffecterDefOf.Mine.Spawn();
-            }
+            effecter ??= EffecterDefOf.Mine.Spawn();
 
             effecter.Trigger(actor, prospectTarget);
             var num = 1;

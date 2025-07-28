@@ -74,7 +74,7 @@ public class ManualDrillUtility
         return false;
     }
 
-    public static int GetShallowResources(Building drill, float shallowFactor, IntVec3 cell)
+    private static int GetShallowResources(Building drill, float shallowFactor, IntVec3 cell)
     {
         var shallowRes = 0;
         if (drill is { Map: null, Spawned: true } || !(shallowFactor > 0f) ||

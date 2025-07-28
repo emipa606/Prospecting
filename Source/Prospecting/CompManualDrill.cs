@@ -8,11 +8,11 @@ public class CompManualDrill : ThingComp
 {
     private const float WorkPerPortionBase = 12000f;
 
-    public float barrelsAngle;
+    private float barrelsAngle;
 
     private int lastUsedTick = -99999;
 
-    public int maxCount;
+    private int maxCount;
 
     private float portionProgress;
 
@@ -24,19 +24,19 @@ public class CompManualDrill : ThingComp
 
     private float prospectYieldPct;
 
-    public float roofFactor = 1f;
+    private float roofFactor = 1f;
 
-    public float windFactor = 1f;
+    private float windFactor = 1f;
 
     public bool windOk = true;
 
-    public static float WorkPerPortionCurrentDifficulty => 12000f / Find.Storyteller.difficulty.mineYieldFactor;
+    private static float WorkPerPortionCurrentDifficulty => 12000f / Find.Storyteller.difficulty.mineYieldFactor;
 
-    public float ProgressToNextPortionPercent => portionProgress / WorkPerPortionCurrentDifficulty;
+    private float ProgressToNextPortionPercent => portionProgress / WorkPerPortionCurrentDifficulty;
 
-    public float ProgressToProspectingPercent => prospectProgress / WorkPerPortionCurrentDifficulty;
+    private float ProgressToProspectingPercent => prospectProgress / WorkPerPortionCurrentDifficulty;
 
-    public Building drill => parent as Building;
+    private Building drill => parent as Building;
 
     public CompProperties_ManualDrill MDProps => (CompProperties_ManualDrill)props;
 
@@ -70,7 +70,7 @@ public class CompManualDrill : ThingComp
         windFactor = newwindFactor;
     }
 
-    public override void PostDeSpawn(Map map)
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
         prospected = false;
         maxCount = 0;
@@ -332,7 +332,7 @@ public class CompManualDrill : ThingComp
         return progressMsg + resMsg + weatherMsg;
     }
 
-    public bool UsedLastTick()
+    private bool UsedLastTick()
     {
         return lastUsedTick >= Find.TickManager.TicksGame - 1;
     }

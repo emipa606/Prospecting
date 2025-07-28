@@ -7,7 +7,7 @@ namespace Prospecting;
 
 public class WorkGiver_ManualDrillMine : WorkGiver_Scanner
 {
-    public readonly ThingDef ManualDrillDef = ProspectDef.PrsManualDrill;
+    private readonly ThingDef ManualDrillDef = ProspectDef.PrsManualDrill;
 
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(ManualDrillDef);
 

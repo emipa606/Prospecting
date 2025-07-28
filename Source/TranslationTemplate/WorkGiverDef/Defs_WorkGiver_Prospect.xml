@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Prospect Surface -->
+  <PrsProspectSurface.label>Prospect Surface</PrsProspectSurface.label>
+  <!-- EN: prospecting -->
+  <PrsProspectSurface.gerund>prospecting</PrsProspectSurface.gerund>
+  <!-- EN: prospect -->
+  <PrsProspectSurface.verb>prospect</PrsProspectSurface.verb>
+</LanguageData>
