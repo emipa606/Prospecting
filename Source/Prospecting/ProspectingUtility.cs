@@ -6,7 +6,7 @@ using Verse;
 
 namespace Prospecting;
 
-public class ProspectingUtility
+public static class ProspectingUtility
 {
     public static bool IsValidToIndicate(Mineable m, Map map)
     {

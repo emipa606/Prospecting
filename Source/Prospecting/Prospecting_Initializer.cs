@@ -39,7 +39,7 @@ internal static class Prospecting_Initializer
                         var MineDeepCommon = thing.deepCommonality;
                         var newMineDeepCommon =
                             MineDeepCommon * (Controller.Settings.PrsDeepCommonality / 100f);
-                        if (newMineDeepCommon != MineDeepCommon)
+                        if (!newMineDeepCommon.Equals(MineDeepCommon))
                         {
                             thing.deepCommonality = newMineDeepCommon;
                             hasDeepChanged = true;
@@ -125,7 +125,7 @@ internal static class Prospecting_Initializer
                     {
                         var MineCommon = thing.building.mineableScatterCommonality;
                         var newMineCommon = MineCommon * (Controller.Settings.PrsCommonality / 100f);
-                        if (newMineCommon != MineCommon)
+                        if (!newMineCommon.Equals(MineCommon))
                         {
                             thing.building.mineableScatterCommonality = newMineCommon;
                             hasChanged = true;

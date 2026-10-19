@@ -1,18 +1,17 @@
 using System.Text;
+using RimWorld;
 using Verse;
 
 namespace Prospecting;
 
 public class ProspectMarker : Building
 {
-    private const int NumExpireTicks = 60000;
-
     private int TicksTillExpire;
 
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref TicksTillExpire, "TicksTillExpire", 60000);
+        Scribe_Values.Look(ref TicksTillExpire, "TicksTillExpire", GenDate.TicksPerDay);
     }
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -20,20 +19,19 @@ public class ProspectMarker : Building
         base.SpawnSetup(map, respawningAfterLoad);
         if (!respawningAfterLoad)
         {
-            TicksTillExpire = 60000;
+            TicksTillExpire = GenDate.TicksPerDay;
         }
     }
 
     protected override void Tick()
     {
         base.Tick();
-        var interval = 240;
-        if (!this.IsHashIntervalTick(interval))
+        if (!this.IsHashIntervalTick(GenTicks.TickRareInterval))
         {
             return;
         }
 
-        TicksTillExpire -= interval;
+        TicksTillExpire -= GenTicks.TickRareInterval;
         if (TicksTillExpire <= 0)
         {
             Destroy();

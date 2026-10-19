@@ -16,9 +16,9 @@ public class JobDriver_ProspectSurface : JobDriver
 
     private const float MinProspectSpeedFactorForNPCs = 0.6f;
 
-    private readonly DesignationDef designation = ProspectDef.Prospect;
-
     private readonly int NumResultTicks = 960;
+
+    private readonly DesignationDef designation = ProspectDef.Prospect;
 
     private Effecter effecter;
 

@@ -6,7 +6,7 @@ using Verse;
 namespace Prospecting;
 
 [HarmonyPatch(typeof(Mineable), "TrySpawnYield", typeof(Map), typeof(bool), typeof(Pawn))]
-public class Mineable_TrySpawnYield
+public static class Mineable_TrySpawnYield
 {
     [HarmonyPriority(800)]
     public static bool Prefix(ref Mineable __instance, ref float ___yieldPct, Map map, Pawn pawn)

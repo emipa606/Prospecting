@@ -5,7 +5,7 @@ using Verse;
 
 namespace Prospecting;
 
-public class ProspectResults
+public static class ProspectResults
 {
     internal static void CheckProspectResult(Pawn prospector, IntVec3 targetCell)
     {

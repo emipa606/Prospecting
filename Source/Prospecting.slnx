@@ -6,4 +6,34 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="Prospecting/Prospecting.csproj" />
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/PrsLanguageData.xml" />
+  </Folder>
+  <Folder Name="/XML/Patches/">
+    <File Path="../Patches/Patches_Prospect_desig.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/WideBoy/">
+    <File Path="../1.7/Defs/WideBoy/Defs_Job_WideBoy.xml" />
+    <File Path="../1.7/Defs/WideBoy/Defs_WideDeepDrill.xml" />
+    <File Path="../1.7/Defs/WideBoy/Defs_WorkGiver_DeepDrill.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ProspectorsBelt/">
+    <File Path="../1.7/Defs/ProspectorsBelt/Defs_Jobs_ProspectBelt.xml" />
+    <File Path="../1.7/Defs/ProspectorsBelt/Defs_ProspectBelt.xml" />
+    <File Path="../1.7/Defs/ProspectorsBelt/Defs_ProspectMarker.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ManualDrill/">
+    <File Path="../1.7/Defs/ManualDrill/Defs_Jobs_ManualDrill.xml" />
+    <File Path="../1.7/Defs/ManualDrill/Defs_ManualDrill.xml" />
+    <File Path="../1.7/Defs/ManualDrill/Defs_Sounds_ManualDrill.xml" />
+    <File Path="../1.7/Defs/ManualDrill/Defs_WorkGiver_ManualDrill.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Prospecting/">
+    <File Path="../1.7/Defs/Prospecting/Defs_Desig_Prospect.xml" />
+    <File Path="../1.7/Defs/Prospecting/Defs_Jobs_Prospect.xml" />
+    <File Path="../1.7/Defs/Prospecting/Defs_WorkGiver_Prospect.xml" />
+  </Folder>
 </Solution>

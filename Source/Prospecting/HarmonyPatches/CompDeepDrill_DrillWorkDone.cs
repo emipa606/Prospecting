@@ -6,7 +6,7 @@ using Verse;
 namespace Prospecting;
 
 [HarmonyPatch(typeof(CompDeepDrill), nameof(CompDeepDrill.DrillWorkDone))]
-public class CompDeepDrill_DrillWorkDone
+public static class CompDeepDrill_DrillWorkDone
 {
     [HarmonyPriority(800)]
     public static bool Prefix(ref CompDeepDrill __instance, ref CompPowerTrader ___powerComp,
@@ -41,10 +41,7 @@ public class CompDeepDrill_DrillWorkDone
         if (wbJob.targetA.HasThing)
         {
             var compWideBoy = wbJob.targetA.Thing.TryGetComp<CompWideBoy>();
-            if (compWideBoy != null)
-            {
-                compWideBoy.lastDriller = driller.thingIDNumber;
-            }
+            compWideBoy?.lastDriller = driller.thingIDNumber;
         }
 
         if (!(___portionProgress > 10000f / Find.Storyteller.difficulty.mineYieldFactor))

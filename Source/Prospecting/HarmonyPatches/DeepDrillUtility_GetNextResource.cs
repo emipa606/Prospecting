@@ -17,7 +17,7 @@ namespace Prospecting;
     ArgumentType.Out,
     ArgumentType.Out
 ])]
-public class DeepDrillUtility_GetNextResource
+public static class DeepDrillUtility_GetNextResource
 {
     [HarmonyPriority(800)]
     public static bool Prefix(ref bool __result, IntVec3 p, Map map, out ThingDef resDef, out int countPresent,

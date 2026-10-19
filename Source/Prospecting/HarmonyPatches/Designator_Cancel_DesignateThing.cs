@@ -5,7 +5,7 @@ using Verse;
 namespace Prospecting;
 
 [HarmonyPatch(typeof(Designator_Cancel), nameof(Designator_Cancel.DesignateThing))]
-public class Designator_Cancel_DesignateThing
+public static class Designator_Cancel_DesignateThing
 {
     [HarmonyPriority(0)]
     public static void Postfix(Thing t)

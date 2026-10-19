@@ -5,7 +5,7 @@ using Verse;
 namespace Prospecting;
 
 [HarmonyPatch(typeof(ReverseDesignatorDatabase), "InitDesignators")]
-public class ReverseDesignatorDatabase_InitDesignators
+public static class ReverseDesignatorDatabase_InitDesignators
 {
     [HarmonyPriority(0)]
     public static void Postfix(ref List<Designator> ___desList)

@@ -18,11 +18,11 @@ public class CompManualDrill : ThingComp
 
     private float portionYieldPct;
 
-    public bool prospected;
-
     private float prospectProgress;
 
     private float prospectYieldPct;
+
+    public bool prospected;
 
     private float roofFactor = 1f;
 
@@ -161,7 +161,7 @@ public class CompManualDrill : ThingComp
         windFactor = newwindFactor;
     }
 
-    private bool SetMaxCount(Building building, int numCells, out ThingDef resFound, out int MaxValue)
+    private static bool SetMaxCount(Building building, int numCells, out ThingDef resFound, out int MaxValue)
     {
         resFound = null;
         MaxValue = 0;
@@ -183,10 +183,10 @@ public class CompManualDrill : ThingComp
             var pos = drillpoint + GenRadial.RadialPattern[i];
             var MaxValueAt = 0;
             var MaxExists = mapComp.GetValue(pos, out var maxVal);
-            var resFoundAt = building.Map.deepResourceGrid.ThingDefAt(pos);
+            var resFoundAt = building.Map?.deepResourceGrid.ThingDefAt(pos);
             if (!MaxExists)
             {
-                if (resFoundAt != null)
+                if (resFoundAt != null && building.Map != null)
                 {
                     MaxValueAt = building.Map.deepResourceGrid.CountAt(drillpoint);
                 }
@@ -264,7 +264,7 @@ public class CompManualDrill : ThingComp
         building.SetForbidden(true);
     }
 
-    private bool GetNextManualResource(Building building, out ThingDef resDef, out int countPresent,
+    private static bool GetNextManualResource(Building building, out ThingDef resDef, out int countPresent,
         out IntVec3 cell)
     {
         return ManualDrillUtility.GetNextManualResource(building, building.TrueCenter().ToIntVec3(), building.Map,

@@ -4,7 +4,7 @@ using Verse;
 namespace Prospecting;
 
 [DefOf]
-public class ProspectDef
+public static class ProspectDef
 {
     public static DesignationDef Prospect;
 

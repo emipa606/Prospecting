@@ -4,7 +4,7 @@ using Verse;
 namespace Prospecting;
 
 [StaticConstructorOnStartup]
-public class CompManualDrillMats
+public static class CompManualDrillMats
 {
     internal static readonly Material BarrelTurbineMat =
         MaterialPool.MatFrom("Things/Building/PrsManualDrill/PrsDrillWindBit");

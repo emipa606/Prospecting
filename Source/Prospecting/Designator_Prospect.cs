@@ -29,29 +29,25 @@ public class Designator_Prospect : Designator
 
     protected override DesignationDef Designation => ProspectDesig;
 
-    public override AcceptanceReport CanDesignateCell(IntVec3 c)
+    public override AcceptanceReport CanDesignateCell(IntVec3 loc)
     {
-        if (!c.InBounds(Map))
+        if (!loc.InBounds(Map))
         {
             return false;
         }
 
-        if (Map.designationManager.DesignationAt(c, Designation) != null)
+        if (Map.designationManager.DesignationAt(loc, Designation) != null ||
+            Map.designationManager.DesignationAt(loc, MineDesig) != null)
         {
             return AcceptanceReport.WasRejected;
         }
 
-        if (Map.designationManager.DesignationAt(c, MineDesig) != null)
-        {
-            return AcceptanceReport.WasRejected;
-        }
-
-        if (c.Fogged(Map))
+        if (loc.Fogged(Map))
         {
             return false;
         }
 
-        var firstMineable = c.GetFirstMineable(Map);
+        var firstMineable = loc.GetFirstMineable(Map);
         if (firstMineable == null)
         {
             return "MessageMustDesignateMineable".Translate();
@@ -63,7 +59,7 @@ public class Designator_Prospect : Designator
             return result;
         }
 
-        var chkcells = GenAdjFast.AdjacentCellsCardinal(c);
+        var chkcells = GenAdjFast.AdjacentCellsCardinal(loc);
         var entry = false;
         if (chkcells.Count > 0)
         {
@@ -94,12 +90,8 @@ public class Designator_Prospect : Designator
             return false;
         }
 
-        if (Map.designationManager.DesignationAt(t.Position, Designation) != null)
-        {
-            return AcceptanceReport.WasRejected;
-        }
-
-        if (Map.designationManager.DesignationAt(t.Position, MineDesig) != null)
+        if (Map.designationManager.DesignationAt(t.Position, Designation) != null ||
+            Map.designationManager.DesignationAt(t.Position, MineDesig) != null)
         {
             return AcceptanceReport.WasRejected;
         }
@@ -125,29 +117,16 @@ public class Designator_Prospect : Designator
         return entry;
     }
 
-    public bool CloseToDesig(DesignationDef desig, int near, IntVec3 root, Map map)
+    public static bool CloseToDesig(DesignationDef desig, int near, IntVec3 root, Map map)
     {
         var cells = GenRadial.RadialCellsAround(root, near, true).ToList();
-        if (cells.Count <= 0)
-        {
-            return false;
-        }
-
-        foreach (var cell in cells)
-        {
-            if (map.designationManager.DesignationAt(cell, desig) != null)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return cells.Count > 0 && cells.Any(cell => map.designationManager.DesignationAt(cell, desig) != null);
     }
 
-    public override void DesignateSingleCell(IntVec3 loc)
+    public override void DesignateSingleCell(IntVec3 c)
     {
-        Map.designationManager.AddDesignation(new Designation(loc, Designation));
-        Map.designationManager.TryRemoveDesignation(loc, DesignationDefOf.SmoothWall);
+        Map.designationManager.AddDesignation(new Designation(c, Designation));
+        Map.designationManager.TryRemoveDesignation(c, DesignationDefOf.SmoothWall);
     }
 
     public override void DesignateThing(Thing t)

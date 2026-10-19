@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace Prospecting;
 
-public class ProspectingGenDeep
+public static class ProspectingGenDeep
 {
     internal static bool ProspectSuccess(Pawn p, out float radius)
     {
@@ -35,12 +36,10 @@ public class ProspectingGenDeep
 
         prospect = result;
         var numCells = Mathf.CeilToInt(thingDef.deepLumpSizeRange.RandomInRange);
-        foreach (var item in GridShapeMaker.IrregularLump(result, map, numCells))
+        foreach (var item in GridShapeMaker.IrregularLump(result, map, numCells)
+                     .Where(x => CanScatterAt(x, map) && !x.InNoBuildEdgeArea(map)))
         {
-            if (CanScatterAt(item, map) && !item.InNoBuildEdgeArea(map))
-            {
-                map.deepResourceGrid.SetAt(item, thingDef, thingDef.deepCountPerCell);
-            }
+            map.deepResourceGrid.SetAt(item, thingDef, thingDef.deepCountPerCell);
         }
 
         return true;

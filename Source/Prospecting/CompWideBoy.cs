@@ -19,6 +19,10 @@ public class CompWideBoy : ThingComp
 
     [NoTranslate] private readonly string SpanImageTwo = "Things/Special/SpanImageTwo";
 
+    private bool MiningResources = true;
+
+    private bool WBBoost;
+
     private int lastBreakCheck;
 
     public int lastDriller;
@@ -27,11 +31,7 @@ public class CompWideBoy : ThingComp
 
     public bool mineRock;
 
-    private bool MiningResources = true;
-
     public int span = 49;
-
-    private bool WBBoost;
 
     public override void PostExposeData()
     {
@@ -104,7 +104,7 @@ public class CompWideBoy : ThingComp
         }
 
         var newPowUse = -1f * powUse;
-        if (compPow.PowerOutput != newPowUse)
+        if (!compPow.PowerOutput.Equals(newPowUse))
         {
             compPow.PowerOutput = newPowUse;
         }
@@ -224,7 +224,7 @@ public class CompWideBoy : ThingComp
         };
     }
 
-    private void SetSpanWB(CompWideBoy cwb)
+    private static void SetSpanWB(CompWideBoy cwb)
     {
         var list = new List<FloatMenuOption>();
         string text = "Prospecting.SpanDoNothing".Translate();
@@ -241,7 +241,7 @@ public class CompWideBoy : ThingComp
         Find.WindowStack.Add(new FloatMenu(list));
     }
 
-    private void SetSpanValue(CompWideBoy cwb, int spanValue)
+    private static void SetSpanValue(CompWideBoy cwb, int spanValue)
     {
         if (spanValue <= 0)
         {
@@ -270,12 +270,12 @@ public class CompWideBoy : ThingComp
         cwb.span = newSpan;
     }
 
-    private void ToggleMineRock(bool flag, CompWideBoy cwb)
+    private static void ToggleMineRock(bool flag, CompWideBoy cwb)
     {
         cwb.mineRock = !flag;
     }
 
-    private void ToggleBoost(bool flag, CompWideBoy cwb)
+    private static void ToggleBoost(bool flag, CompWideBoy cwb)
     {
         cwb.WBBoost = !flag;
     }
@@ -313,7 +313,7 @@ public class CompWideBoy : ThingComp
         }
     }
 
-    private bool NoMiningResources(CompWideBoy compWB)
+    private static bool NoMiningResources(CompWideBoy compWB)
     {
         var compDeepDrill = compWB?.parent.TryGetComp<CompDeepDrill>();
         if (compDeepDrill == null)
@@ -323,14 +323,14 @@ public class CompWideBoy : ThingComp
 
         var value = compDeepDrill.ValuableResourcesPresent();
         var baseRock = false;
-        var compWbParent = compWB.parent;
-        if (compWbParent?.Map != null)
+        var compWbParent = compWB?.parent;
+        if (compWbParent?.Map != null && compWB != null)
         {
             baseRock = DeepDrillUtility.GetBaseResource(compWB.parent.Map,
                 compWB.parent.TrueCenter().ToIntVec3()) != null;
         }
 
-        if (compWB.mineRock)
+        if (compWB is { mineRock: true })
         {
             if (!value && !baseRock)
             {

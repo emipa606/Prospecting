@@ -5,7 +5,7 @@ using Verse;
 
 namespace Prospecting;
 
-public class ManualDrillUtility
+public static class ManualDrillUtility
 {
     public const int drillCellsNum = 9;
 
